@@ -23,16 +23,11 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.ViewHold
     private ArrayList<Student> students;
     private Callback callback;
 
-
-
-    public StudentAdapter() {}
-
     public StudentAdapter(Context mContext, ArrayList<Student> students, Callback callback) {
         this.mContext = mContext;
         this.students = students;
         this.callback = callback;
     }
-
 
     @NonNull
     @Override

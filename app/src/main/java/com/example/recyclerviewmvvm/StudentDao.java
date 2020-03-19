@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -13,7 +14,7 @@ import java.util.List;
 @Dao
 public interface StudentDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Student student);
 
     @Update
@@ -26,5 +27,5 @@ public interface StudentDao {
     void deleteAll();
 
     @Query("SELECT * FROM tbl_students ORDER BY age  DESC")
-    LiveData< List<Student>> getALLStudents();
+     LiveData<List<Student>> getALLStudents();
 }

@@ -1,6 +1,7 @@
 package com.example.recyclerviewmvvm;
 
 import android.app.Application;
+import android.content.Context;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
@@ -11,8 +12,8 @@ public class StudentRepository {
     private StudentDao studentDao;
     private LiveData<List<Student>> allStudents;
 
-    public StudentRepository(Application application) {
-        StudentDatabase database = StudentDatabase.getInstance(application);
+    public StudentRepository(Context context) {
+        StudentDatabase database = StudentDatabase.getInstance(context);
 
         studentDao = database.studentDao();
         allStudents = studentDao.getALLStudents();

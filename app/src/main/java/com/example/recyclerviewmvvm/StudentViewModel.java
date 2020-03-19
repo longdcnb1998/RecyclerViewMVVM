@@ -18,17 +18,17 @@ import java.util.List;
 import java.util.Map;
 
 
-public class StudentViewModel extends AndroidViewModel {
+public class StudentViewModel extends AndroidViewModel{
 
     private StudentRepository repository;
     private LiveData<List<Student>> data;
-
-    public StudentViewModel(Application application) {
-        super(application);
-        repository = new StudentRepository(application);
+//
+    public StudentViewModel(Application context) {
+        super(context);
+        repository = new StudentRepository(context);
         data = repository.getAllStudents();
     }
-
+//
     public void insert(Student student){
         repository.insert(student);
     }
@@ -42,7 +42,7 @@ public class StudentViewModel extends AndroidViewModel {
     }
 
     public void deleteAll(){}
-
+//
     public LiveData<List<Student>> getAllStudents(){
         return data;
     }
@@ -60,22 +60,11 @@ public class StudentViewModel extends AndroidViewModel {
 //        super();
 //    }
 //
-//    public void loadData(Context context){
-//        StudentDatabase db = StudentDatabase.getInstance(context);
-//        StudentDao studentDao = db.studentDao();
-//        List<Student>students = studentDao.getALLStudents();
-//        if (students !=null && students.size() >0){
-//            Map<Integer,Student> result = new HashMap<>();
-//            for (int i = 0; i < students.size(); i++) {
-//                Student student = students.get(i);
-//                if (student == null){
-//                    continue;
-//                }
-//                int index = student.getId();
-//                result.put(index,student);
-//            }
-//            liveStudent.postValue(new ArrayList<>(result.values()));
+//    public void loadData( final  Context context){
+//        repository = new StudentRepository(context);
+//        data = (LiveData<List<Student>>) repository.getAllStudents();
+//        if (data != null){
+//            liveStudent.postValue((List<Student>) data);
 //        }
-//        else Log.d("Student",students.size());
 //    }
 }
